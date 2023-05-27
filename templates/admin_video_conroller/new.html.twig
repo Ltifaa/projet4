@@ -1,0 +1,11 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}New Video{% endblock %}
+
+{% block body %}
+    <h1>Create new Video</h1>
+
+    {{ include('admin_video_conroller/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_video_conroller_index') }}">back to list</a>
+{% endblock %}
