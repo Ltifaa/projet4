@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 26 mai 2023 à 17:04
+-- Généré le : sam. 27 mai 2023 à 15:44
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -35,6 +35,32 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `description` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `title`, `image_name`, `description`, `slug`) VALUES
+(1, 'Exercices pour femmes enceintes', 'lorem ipsum', 'Lorum ipsum', 'exercices-pour-femmes-enceintes'),
+(2, 'Préparation à l\'accouchement', 'lorem ipsum', 'Lorum ipsum', 'preparation-a-l-accouchement'),
+(3, 'Post partum', 'lorem ipsum', 'Lorum ipsum', 'post-partum'),
+(4, 'Conseils pour l\'allaitement', 'lorem ipsum', 'Lorum ipsum', 'conseils-pour-l-allaitement'),
+(5, 'Alimentation pendant la grossesse', 'lorem ipsum', 'Lorum ipsum', 'alimentation-pendant-la-grossesse');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie_sponsor`
+--
+
+DROP TABLE IF EXISTS `categorie_sponsor`;
+CREATE TABLE IF NOT EXISTS `categorie_sponsor` (
+  `categorie_id` int NOT NULL,
+  `sponsor_id` int NOT NULL,
+  PRIMARY KEY (`categorie_id`,`sponsor_id`),
+  KEY `IDX_DE0F6776BCF5E72D` (`categorie_id`),
+  KEY `IDX_DE0F677612F7FB51` (`sponsor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -56,7 +82,8 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20230526162338', '2023-05-26 16:24:51', 78);
+('DoctrineMigrations\\Version20230526162338', '2023-05-26 16:24:51', 78),
+('DoctrineMigrations\\Version20230526170554', '2023-05-26 17:06:04', 260);
 
 -- --------------------------------------------------------
 
@@ -110,8 +137,30 @@ CREATE TABLE IF NOT EXISTS `video` (
   `time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:dateinterval)',
   `sponsor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `categorie_id` int DEFAULT NULL,
+  `relation_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_7CC7DA2CBCF5E72D` (`categorie_id`),
+  KEY `IDX_7CC7DA2C3256915B` (`relation_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `categorie_sponsor`
+--
+ALTER TABLE `categorie_sponsor`
+  ADD CONSTRAINT `FK_DE0F677612F7FB51` FOREIGN KEY (`sponsor_id`) REFERENCES `sponsor` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_DE0F6776BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `video`
+--
+ALTER TABLE `video`
+  ADD CONSTRAINT `FK_7CC7DA2C3256915B` FOREIGN KEY (`relation_id`) REFERENCES `sponsor` (`id`),
+  ADD CONSTRAINT `FK_7CC7DA2CBCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
