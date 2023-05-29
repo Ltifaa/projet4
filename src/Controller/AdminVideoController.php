@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admin/video')]
-class AdminVideoConrollerController extends AbstractController
+class AdminVideoController extends AbstractController
 {
     #[Route('/', name: 'app_admin_video_index', methods: ['GET'])]
     public function index(VideoRepository $videoRepository): Response
