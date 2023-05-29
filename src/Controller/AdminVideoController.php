@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin/video')]
 class AdminVideoController extends AbstractController
@@ -17,19 +18,24 @@ class AdminVideoController extends AbstractController
     public function index(VideoRepository $videoRepository): Response
     {
         return $this->render('admin_video/index.html.twig', [
-            'videos' => $videoRepository->findAll(),
+            'videos' => $videoRepository->findBy([], ["id"=>'ASC']),
         ]);
     }
 
     #[Route('/new', name: 'app_admin_video_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, VideoRepository $videoRepository): Response
+    public function new(Request $request, VideoRepository $videoRepository, SluggerInterface $slugger): Response
     {
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $video->setSlug(strtolower($slugger->slug($video->getTitle())));
+            $video->setTitle(ucfirst($video->getTitle()));
             $videoRepository->save($video, true);
+
+            //Mise en place d'un message flash
+            $this->addFlash('Succès', 'La vidéo a bien été ajoutée');
 
             return $this->redirectToRoute('app_admin_video_index', [], Response::HTTP_SEE_OTHER);
         }
