@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin/sponsor')]
 class AdminSponsorController extends AbstractController
@@ -17,19 +18,24 @@ class AdminSponsorController extends AbstractController
     public function index(SponsorRepository $sponsorRepository): Response
     {
         return $this->render('admin_sponsor/index.html.twig', [
-            'sponsors' => $sponsorRepository->findAll(),
+            'sponsors' => $sponsorRepository->findBy([], ["id"=>'ASC']),
         ]);
     }
 
     #[Route('/new', name: 'app_admin_sponsor_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, SponsorRepository $sponsorRepository): Response
+    public function new(Request $request, SponsorRepository $sponsorRepository, SluggerInterface $slugger): Response
     {
         $sponsor = new Sponsor();
         $form = $this->createForm(SponsorType::class, $sponsor);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $sponsor->setSlug(strtolower($slugger->slug($sponsor->getName())));
+            $sponsor->setName(ucfirst($sponsor->getName()));
             $sponsorRepository->save($sponsor, true);
+
+             //Mise en place d'un message flash
+            $this->addFlash('Succès', 'Le sponsor a bien été ajouté');
 
             return $this->redirectToRoute('app_admin_sponsor_index', [], Response::HTTP_SEE_OTHER);
         }

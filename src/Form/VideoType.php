@@ -17,9 +17,14 @@ class VideoType extends AbstractType
             ->add('updatedAt')
             ->add('time')
             ->add('sponsor')
-            ->add('slug')
+            ->remove('slug')
             ->add('categorie')
             ->remove('relation')
+            ->add('imageFile', FileType::class, [
+                'required' =>false,
+                'label' => 'Image de la catégorie'
+
+            ])
         ;
     }
 

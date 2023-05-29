@@ -10,18 +10,18 @@ class VideoFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $video = new Video();
-        $video->setTitle('Yoga prénatal');
-        $video->setDescription('Lorem opsum');
-        $video->setTime();
-        $video->setSlug('yoga-prénatal');
-        $video->setSponsor('');
-        $video->setCategorie('');
+        // $video = new Video();
+        // $video->setTitle('Yoga prénatal');
+        // $video->setDescription('Lorem opsum');
+        // $video->setTime();
+        // $video->setSlug('yoga-prénatal');
+        // $video->setSponsor('');
+        // $video->setCategorie('');
 
 
 
-        $manager->persist($video);
+        // $manager->persist($video);
 
-        $manager->flush();
+        // $manager->flush();
     }
 }
