@@ -19,7 +19,7 @@ class VideoType extends AbstractType
             ->add('sponsor')
             ->add('slug')
             ->add('categorie')
-            ->add('relation')
+            ->remove('relation')
         ;
     }
 
