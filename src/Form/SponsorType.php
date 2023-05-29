@@ -15,8 +15,13 @@ class SponsorType extends AbstractType
             ->add('name')
             ->add('imageName')
             ->add('siteWeb')
-            ->add('slug')
-            ->add('categories')
+            ->remove('slug')
+            ->remove('categories')
+            ->add('imageFile', FileType::class, [
+                'required' =>false,
+                'label' => 'Image de la catégorie'
+
+            ])
         ;
     }
 

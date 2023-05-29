@@ -40,6 +40,11 @@ class Video
     #[ORM\ManyToOne(inversedBy: 'videos')]
     private ?Sponsor $relation = null;
 
+    public function __toString(): string
+    {
+        return $this->title;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
