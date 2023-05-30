@@ -42,8 +42,6 @@ class Video
     #[ORM\ManyToOne(inversedBy: 'videos')]
     private ?Sponsor $relation = null;
 
-
-
     public function __construct()
 
     {
