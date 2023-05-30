@@ -17,7 +17,7 @@ class VideoType extends AbstractType
         $builder
             ->add('title')
             ->add('description', CKEditorType::class)
-            ->remove('updatedAt', DateTimeType::class,[ 
+            ->add('updatedAt', DateTimeType::class,[ 
                 'widget' => 'single_text',
                 'data' => new \DateTimeImmutable(),
             ])
