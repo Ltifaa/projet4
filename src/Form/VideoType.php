@@ -16,8 +16,11 @@ class VideoType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
-            ->add('updatedAt')
+            ->add('description', CKEditorType::class)
+            ->remove('updatedAt', DateTimeType::class,[ 
+                'widget' => 'single_text',
+                'data' => new \DateTimeImmutable(),
+            ])
             ->add('time')
             ->add('sponsor', EntityType::class,
             ['class' => 'App\Entity\Sponsor', 'expanded' => true])
