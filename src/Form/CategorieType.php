@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class CategorieType extends AbstractType
 {
@@ -15,7 +16,7 @@ class CategorieType extends AbstractType
         $builder
             ->add('title')
             ->add('imageName')
-            ->add('description')
+            ->add('description', CKEditorType::class)
             ->remove('slug')
             ->remove('sponsor')
             ->add('imageFile', FileType::class, [

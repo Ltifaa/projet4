@@ -4,8 +4,11 @@ namespace App\Form;
 
 use App\Entity\Video;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class VideoType extends AbstractType
 {
@@ -13,18 +16,19 @@ class VideoType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
+            ->add('description', CKEditorType::class)
             ->add('updatedAt')
             ->add('time')
-            ->add('sponsor')
+            ->add('sponsor', EntityType::class,
+            ['class' => 'App\Entity\Sponsor', 'expanded' => true])
             ->remove('slug')
-            ->add('categorie')
-            ->remove('relation')
-            ->add('imageFile', FileType::class, [
-                'required' =>false,
-                'label' => 'Image de la catégorie'
+            ->add('categorie', EntityType::class,['class' => 'App\Entity\Categorie'])
+            // ->remove('relation')
+            // ->add('imageFile', FileType::class, [
+            //     'required' =>false,
+            //     'label' => 'Image de la catégorie'
 
-            ])
+            // ])
         ;
     }
 
