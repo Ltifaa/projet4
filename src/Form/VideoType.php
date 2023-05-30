@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Video;
+use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +22,7 @@ class VideoType extends AbstractType
                 'widget' => 'single_text',
                 'data' => new \DateTimeImmutable(),
             ])
-            ->add('time')
+            ->remove('time')
             ->add('sponsor', EntityType::class,
             ['class' => 'App\Entity\Sponsor', 'expanded' => true])
             ->remove('slug')

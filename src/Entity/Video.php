@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\VideoRepository;
+use DateInterval;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\VideoRepository;
 
 #[ORM\Entity(repositoryClass: VideoRepository::class)]
 class Video
@@ -23,10 +25,10 @@ class Video
     
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private ?DateTimeImmutable $updatedAt = null;
 
-    #[ORM\Column]
-    private ?\DateInterval $time = null;
+    // #[ORM\Column]
+    // private ?DateInterval $time = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $sponsor = null;
@@ -40,6 +42,14 @@ class Video
     #[ORM\ManyToOne(inversedBy: 'videos')]
     private ?Sponsor $relation = null;
 
+
+
+    public function __construct()
+
+    {
+        $this->updatedAt=new \DateTimeImmutable();
+        
+    }
     public function __toString(): string
     {
         return $this->title;
@@ -81,22 +91,26 @@ class Video
 
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
+
+
+
+
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    public function getTime(): ?\DateInterval
-    {
-        return $this->time;
-    }
+    // public function getTime(): ?\DateInterval
+    // {
+    //     return $this->time;
+    // }
 
-    public function setTime(\DateInterval $time): self
-    {
-        $this->time = $time;
+    // public function setTime(\DateInterval $time): self
+    // {
+    //     $this->time = $time;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getSponsor(): ?string
     {
