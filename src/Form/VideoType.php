@@ -14,7 +14,10 @@ class VideoType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('updatedAt')
+            ->remove('updatedAt', DateTimeType::class,[ 
+                'widget' => 'single_text',
+                'data' => new \DateTimeImmutable(),
+            ])
             ->add('time')
             ->add('sponsor')
             ->remove('slug')

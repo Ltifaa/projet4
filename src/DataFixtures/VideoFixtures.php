@@ -37,7 +37,7 @@ class VideoFixtures extends Fixture
         $video = new Video();
         $video->setTitle('Yoga prénatal');
         $video->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat');
-        //$video->setTime('');
+        //$video->setTime('')
         $video->setSlug('yoga-prenatal');
         $video->setCategorie($this->getReference(CategorieFixtures::EXERCICES_POUR_FEMMES_ENCEINTES));
         $video->getSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
