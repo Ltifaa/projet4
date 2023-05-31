@@ -19,9 +19,16 @@ class UserFixtures extends Fixture
         $user->setEmail("bloom-in-two@gmail.com");
         $user->setPassword($this->encoder->hashPassword($user,'pass'));
         $user->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
-        $user->
-
+        $user->setIsVerified(true);
         $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('user@user.com');
+        $user->setPassword($this->encoder->hashPassword($user, 'pass'));
+        $user->setRoles(['ROLE_USER']);
+        $user->setIsVerified(true);
+        $manager->persist($user);
+
 
         $manager->flush();
     }
