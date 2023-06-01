@@ -34,16 +34,19 @@ class Sponsor
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: Video::class)]
-    private Collection $videos;
+   
 
     #[ORM\ManyToMany(targetEntity: Categorie::class, mappedBy: 'sponsor')]
     private Collection $categories;
 
+    #[ORM\OneToMany(mappedBy: 'sponsor', targetEntity: Video::class)]
+    private Collection $videos;
+
     public function __construct()
     {
-        $this->videos = new ArrayCollection();
+    
         $this->categories = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -129,35 +132,6 @@ class Sponsor
         return $this;
     }
 
-    /**
-     * @return Collection<int, Video>
-     */
-    public function getVideos(): Collection
-    {
-        return $this->videos;
-    }
-
-    public function addVideo(Video $video): self
-    {
-        if (!$this->videos->contains($video)) {
-            $this->videos->add($video);
-            $video->setRelation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVideo(Video $video): self
-    {
-        if ($this->videos->removeElement($video)) {
-            // set the owning side to null (unless already changed)
-            if ($video->getRelation() === $this) {
-                $video->setRelation(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Categorie>
@@ -181,6 +155,36 @@ class Sponsor
     {
         if ($this->categories->removeElement($category)) {
             $category->removeSponsor($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Video>
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    public function addVideo(Video $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $this->videos->add($video);
+            $video->setSponsor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Video $video): self
+    {
+        if ($this->videos->removeElement($video)) {
+            // set the owning side to null (unless already changed)
+            if ($video->getSponsor() === $this) {
+                $video->setSponsor(null);
+            }
         }
 
         return $this;

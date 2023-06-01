@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{video.titre}}{% endblock %}
+{% block title %}{{video.title}}{% endblock %}
 
 {% block body %}
 
@@ -19,16 +19,15 @@
     <p>{{ video.description }}</p>
 
     <h2>Catégorie</h2>
-    {% for categorie in video.categories %}
-    <li>{{ categorie }}</li>
+   
+    <li>{{ video.categorie }}</li>
 
     <h2>Sponsor(s)</h2>
-    {% for sponsor in video.sponsors %}
-    <li>{{ sponsor }}</li>
-    {% endfor %}
+
+    <div>{{ video.sponsor.name  }}</div>
+
 
     </ul>
-
     </div>
 </div>
 {% endblock %}
