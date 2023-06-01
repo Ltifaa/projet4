@@ -24,7 +24,7 @@ class UserType extends AbstractType
             ->remove('isVerified')
             ->add('firstName')
             ->add('lastName')
-            ->add('imageName')
+            ->remove('imageName')
             ->add('delivery', null, [
                 'format' => 'dd-MM-yyyy',
             ])

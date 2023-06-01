@@ -7,15 +7,15 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Créer un compte</h1>
-
+    <h1 class="moncompte">Rejoindre la communauté Bloom</h1>
+<section class="cadre">
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn btn-success">créer le compte</button>
+</section>
+        <button type="submit" class="btn btn-success">Valider</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
