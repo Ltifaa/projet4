@@ -222,7 +222,7 @@ class VideoFixtures extends Fixture
         $video->setTitle("Quoi manger");
         $video->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat');
         //$video->setTime('');
-        $video->setVideoName('istockphoto-1387127411-640-adpp-is.mp4');
+        $video->setVideoName('orange.mp4');
         $video->setSlug('quoi-manger');
         $video->setCategorie($this->getReference(CategorieFixtures::ALIMENTATION_PENDANT_LA_GROSSESSE));
         $video->getSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
@@ -231,7 +231,7 @@ class VideoFixtures extends Fixture
         $video->setTitle("Régime alimentaire");
         $video->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat');
         //$video->setTime('');
-        $video->setVideoName('verbaudet-preparer-l-arrivee-de-bebe.mov');
+        $video->setVideoName('verbaudet.mov');
         $video->setSlug('regime -alimentaire');
         $video->setCategorie($this->getReference(CategorieFixtures::ALIMENTATION_PENDANT_LA_GROSSESSE));
         $video->getSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
