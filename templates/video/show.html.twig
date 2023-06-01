@@ -7,11 +7,11 @@
 <h1>{{video.title}}</h1>
 <div class="row">
     <div class="col-12-col-md-3">
-    {% if video.imageName is defined and video.imageName is not null %}
-    <img src="{{asset ('images/videos/alimentation' ~ video.imageName) }}" alt="" class="img-fluid">
+    {% if video.videoName is defined and video.videoName is not null %}
+    <video controls src="{{asset ('videos/' ~ video.videoName) }}" alt="" class="img-fluid">
     
     {% else %}
-    <img src="{{ asset ('image/videos/imagedefaut.jpg') }}" alt="" class="img-fluid">
+    <img src="{{ asset ('videos/imagedefaut.jpg') }}" alt="" class="img-fluid">
     {% endif %}
     </div>
     <div class="col-12 col-md-9">
