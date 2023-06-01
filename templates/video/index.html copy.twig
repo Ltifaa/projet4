@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Vidéos{% endblock %}
+
+{% block body %}
+<h1>Nos Vidéos</h1>
+<ul class="navbar-nav w-100">
+
+{% if app.user is not null %}
+        <a class="nav-link" href="{{ path ('/public/images/videos/alimentation')}}">Mon Compte</a>
+        <a class="nav-link" href="{{ path ('app_logout')}}">Déconnexion</a>
+        {% else %}
+        <a class="nav-link" href="{{ path ('app_register')}}">Inscription</a>
+        <a class="nav-link" href="{{ path ('app_login')}}">Connexion</a>
+        {% endif %}
+
+        
+        <li>
+        <a class="nav-link active" aria-current="page" href="/public/images/videos/exercices">Exercices pour femmes enceintes</a>
+        </li>
+        <li>
+        <a class="nav-link active" aria-current="page" href="/public/images/videos/alimentation">Alimentation pendant la grossesse</a>
+        </li>
+        <li>
+        <a class="nav-link active" aria-current="page" href="/public/images/videos/allaitement">Conseil en allaitement</a>
+        </li>
+        <li>
+        <a class="nav-link active" aria-current="page" href="/public/images/videos/postpartum">Bien vivre son Post-partum</a>
+        </li>
+        <li>
+        <a class="nav-link active" aria-current="page" href="/public/images/videos/prepaaccouchement">Préparation à l'accouchement</a>
+        </li>
+    </ul>
+<div class="row">
+{% for video in videos %}
+<div class="col-12 col-md-3 col-xl-2">
+<div class="card">
+{% if video.imageName is defined  and video.imageName is not null%}
+    <img src="{{asset ('images/videos/alimentation' ~ video.imageName)}}" class="card-img-top" alt="...">
+    {% else %}
+    <img src="{{asset ('images/videos/imagedefaut.jpg')}}" class="card-img-top" alt="...">
+    {% endif %}
+    <div class="card-body">
+        <a href="{{ path('app_video_show', {slug: video.slug}) }}" class="text-dark">{{ video.title }}</a>
+    </div>
+</div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
