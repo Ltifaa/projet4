@@ -34,16 +34,18 @@ class Categorie
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Video::class)]
-    private Collection $categorie;
+ 
 
     #[ORM\ManyToMany(targetEntity: Sponsor::class, inversedBy: 'categories')]
     private Collection $sponsor;
 
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Video::class)]
+    private Collection $videos;
+
     public function __construct()
     {
-        $this->categorie = new ArrayCollection();
         $this->sponsor = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -129,35 +131,7 @@ class Categorie
         return $this;
     }
 
-    /**
-     * @return Collection<int, Video>
-     */
-    public function getCategorie(): Collection
-    {
-        return $this->categorie;
-    }
-
-    public function addCategorie(Video $categorie): self
-    {
-        if (!$this->categorie->contains($categorie)) {
-            $this->categorie->add($categorie);
-            $categorie->setCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTest(Video $categorie): self
-    {
-        if ($this->categorie->removeElement($categorie)) {
-            // set the owning side to null (unless already changed)
-            if ($categorie->getCategorie() === $this) {
-                $categorie->setCategorie(null);
-            }
-        }
-
-        return $this;
-    }
+  
 
     /**
      * @return Collection<int, Sponsor>
@@ -179,6 +153,36 @@ class Categorie
     public function removeSponsor(Sponsor $sponsor): self
     {
         $this->sponsor->removeElement($sponsor);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Video>
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    public function addVideo(Video $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $this->videos->add($video);
+            $video->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Video $video): self
+    {
+        if ($this->videos->removeElement($video)) {
+            // set the owning side to null (unless already changed)
+            if ($video->getCategorie() === $this) {
+                $video->setCategorie(null);
+            }
+        }
 
         return $this;
     }
