@@ -34,8 +34,6 @@ class Video
     // #[ORM\Column]
     // private ?DateInterval $time = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $sponsor = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
@@ -52,6 +50,9 @@ class Video
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'videos')]
     private Collection $users;
+
+    #[ORM\ManyToOne(inversedBy: 'videos')]
+    private ?Sponsor $sponsor = null;
 
     public function __construct()
 
@@ -122,17 +123,7 @@ class Video
     //     return $this;
     // }
 
-    public function getSponsor(): ?string
-    {
-        return $this->sponsor;
-    }
 
-    public function setSponsor(?string $sponsor): self
-    {
-        $this->sponsor = $sponsor;
-
-        return $this;
-    }
 
     public function getSlug(): ?string
     {
@@ -221,6 +212,18 @@ class Video
         if ($this->users->removeElement($user)) {
             $user->removeVideo($this);
         }
+
+        return $this;
+    }
+
+    public function getSponsor(): ?Sponsor
+    {
+        return $this->sponsor;
+    }
+
+    public function setSponsor(?Sponsor $sponsor): self
+    {
+        $this->sponsor = $sponsor;
 
         return $this;
     }
