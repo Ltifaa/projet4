@@ -15,8 +15,8 @@
 
     {% for video in categorie.videos %}
 
-<div class="col-12 col-md-3 col-xl-2 mb-4 " >
-<div class="card bg-dark"  >
+<div class="col-12 col-md-3 col-xl-2 mb-3 " >
+<div class="card bg-dark "  >
 {% if video.videoName is defined  and video.videoName is not null%}
     <video controls src="{{asset ('videos/' ~ video.videoName)}}" class="card-img-top" alt="..."></video>
     <a href="{{ path('app_video_show', {slug: video.slug}) }}" class="text-dark"> {{ video.title }}</a>
