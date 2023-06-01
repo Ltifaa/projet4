@@ -11,16 +11,26 @@
 </style>
 
 <div class="row">
+<ul>
+{% for categorie in categories %}
+<li>{{ categorie.title}} <ul>
+    {% for video in categorie.videos %}
+   <li>{{ video.videoName}}</li>
+    {% endfor %}
+    </ul>
+</li>
+{% endfor %}
+</ul>
 {% for video in videos %}
 <div class="col-12 col-md-3 col-xl-2 mb-4 " >
 <div class="card bg-dark"  >
-{% if video.imageName is defined  and video.imageName is not null%}
-    <img src="{{asset ('images/videos/alimentation' ~ video.imageName)}}" class="card-img-top" alt="...">
+{% if video.videoName is defined  and video.videoName is not null%}
+    <video controls src="{{asset ('videos/' ~ video.videoName)}}" class="card-img-top" alt="..."></video>
     {% else %}
-    <img src="{{asset ('images/videos/imagedefaut.jpg')}}" class="card-img-top" alt="...">
+    <img src="{{asset ('videos/imagedefaut.jpg')}}" class="card-img-top" alt="...">
     {% endif %}
-    <div class="card-body   p-4 m-4" style="background-color: #B76E79; height: 150px;font-family: 'Roboto';" >
-        <a href="{{ path('app_video_show', {slug: video.slug}) }}" class="text-dark">{{ video.title }}</a>
+    <div class="card-body   p-4 m-4" style="background-color: #B76E79;font-family: 'Roboto';" >
+        <a href="{{ path('app_video_show', {slug: video.slug}) }}" class="text-dark"> {{ video.title }}</a>
     </div>
 </div>
 </div>
