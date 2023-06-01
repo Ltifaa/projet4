@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
@@ -16,10 +17,18 @@ class UserType extends AbstractType
             ->add('email', TextType::class)
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
+                "required"=>false
             ])
             ->remove('roles')
             ->remove('password')
             ->remove('isVerified')
+            ->add('firstName')
+            ->add('lastName')
+            ->add('imageName')
+            ->add('delivery', null, [
+                'format' => 'dd-MM-yyyy',
+            ])
+
         ;
     }
 
