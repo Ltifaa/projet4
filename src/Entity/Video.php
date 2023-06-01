@@ -38,17 +38,15 @@ class Video
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\ManyToOne(inversedBy: 'test')]
-    private ?Categorie $categorie = null;
-
-    #[ORM\ManyToOne(inversedBy: 'videos')]
-    private ?Sponsor $relation = null;
 
     #[ORM\Column(length: 255)]
     private ?string $videoName = null;
     // NOTE: This is not a mapped field of entity metadata, just a simple property.
     #[UploadableField(mapping: 'videos', fileNameProperty: 'videoName')]
     private ?File $videoFile = null;
+
+    #[ORM\ManyToOne(inversedBy: 'videos')]
+    private ?Categorie $categorie = null;
 
     public function __construct()
 
@@ -142,29 +140,9 @@ class Video
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
-    {
-        return $this->categorie;
-    }
 
-    public function setCategorie(?Categorie $categorie): self
-    {
-        $this->categorie = $categorie;
 
-        return $this;
-    }
 
-    public function getRelation(): ?Sponsor
-    {
-        return $this->relation;
-    }
-
-    public function setRelation(?Sponsor $relation): self
-    {
-        $this->relation = $relation;
-
-        return $this;
-    }
 
     public function getVideoName(): ?string
     {
@@ -200,5 +178,17 @@ class Video
     public function getVideoFile(): ?File
     {
         return $this->videoFile;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
     }
 }
