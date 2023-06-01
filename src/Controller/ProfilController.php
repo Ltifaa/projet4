@@ -64,7 +64,7 @@ class ProfilController extends AbstractController
     #[Route('/remove-favori/{id}', name: 'remove_favori')]
     public function removeFavori($id, VideoRepository $videoRepository, EntityManagerInterface $em): Response
     {
-        //on récupère le livre dans la base de donnée (car il nous faut l'objet livre)
+        //on récupère le livre dans la base de donnée (car il nous faut l'objet video)
         $viideo = $videoRepository->find($id);
         //On récupère l'utilisateur 
         $user = $this->getUser();
@@ -75,7 +75,7 @@ class ProfilController extends AbstractController
         //On enregistre les modifications 
         $em->persist($user);
         $em->flush();
-        //On redirige vers la page des livres 
+        //On redirige vers la page des vidéos 
         return $this->redirectToRoute('app_profil');
 
     }
