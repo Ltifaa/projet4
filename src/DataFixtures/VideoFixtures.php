@@ -41,7 +41,7 @@ class VideoFixtures extends Fixture
         $video->setSlug('yoga-prenatal');
         $video->setVideoName('yoga.mp4');
         $video->setCategorie($this->getReference(CategorieFixtures::EXERCICES_POUR_FEMMES_ENCEINTES));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
         $manager->persist($video);
         
         $video = new Video();
@@ -51,7 +51,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('ex-collectif.mp4');
         $video->setSlug('exercices-aerobiques');
         $video->setCategorie($this->getReference(CategorieFixtures::EXERCICES_POUR_FEMMES_ENCEINTES));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
         $manager->persist($video);
 
         $video = new Video();
@@ -61,7 +61,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('exercice.mp4');
         $video->setSlug('gym');
         $video->setCategorie($this->getReference(CategorieFixtures::EXERCICES_POUR_FEMMES_ENCEINTES));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
         $manager->persist($video);
 
         $video = new Video();
@@ -71,7 +71,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('exo.mp4');
         $video->setSlug('meilleurs-exercices');
         $video->setCategorie($this->getReference(CategorieFixtures::EXERCICES_POUR_FEMMES_ENCEINTES));
-        $video->getSponsor($this->getReference(SponsorFixtures::VERTBAUDET));
+        $video->setSponsor($this->getReference(SponsorFixtures::VERTBAUDET));
         $manager->persist($video);
         
         $video = new Video();
@@ -81,7 +81,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('pasta.mp4');
         $video->setSlug('cours-de-preparation');
         $video->setCategorie($this->getReference(CategorieFixtures::PREPARATION_A_L_ACCOUCHEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::VERTBAUDET));
+        $video->setSponsor($this->getReference(SponsorFixtures::VERTBAUDET));
         $manager->persist($video);
 
         $video = new Video();
@@ -91,7 +91,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('orange.mp4');
         $video->setSlug('chant-prenatal');
         $video->setCategorie($this->getReference(CategorieFixtures::PREPARATION_A_L_ACCOUCHEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::GUIGOZ));
+        $video->setSponsor($this->getReference(SponsorFixtures::GUIGOZ));
         $manager->persist($video);
         $manager->flush();
 
@@ -102,7 +102,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('pampers-donner-le-bain.mov');
         $video->setSlug('la-sophrologie');
         $video->setCategorie($this->getReference(CategorieFixtures::PREPARATION_A_L_ACCOUCHEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::PAMPERS));
+        $video->setSponsor($this->getReference(SponsorFixtures::PAMPERS));
         $manager->persist($video);
         $manager->flush();
         
@@ -113,7 +113,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('echo.mp4');
         $video->setSlug('massage-prenatal');
         $video->setCategorie($this->getReference(CategorieFixtures::PREPARATION_A_L_ACCOUCHEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::KLORANE));
+        $video->setSponsor($this->getReference(SponsorFixtures::KLORANE));
         $manager->persist($video);
         $manager->flush();
         
@@ -124,7 +124,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('post-papa.mp4');
         $video->setSlug('depression');
         $video->setCategorie($this->getReference(CategorieFixtures::POST_PARTUM));
-        $video->getSponsor($this->getReference(SponsorFixtures::KLORANE));
+        $video->setSponsor($this->getReference(SponsorFixtures::KLORANE));
         $manager->persist($video);
         $manager->flush();
         
@@ -135,7 +135,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('baby-blues.mp4');
         $video->setSlug('baby-blues');
         $video->setCategorie($this->getReference(CategorieFixtures::POST_PARTUM));
-        $video->getSponsor($this->getReference(SponsorFixtures::KLORANE));
+        $video->setSponsor($this->getReference(SponsorFixtures::KLORANE));
         $manager->persist($video);
         $manager->flush();
 
@@ -146,7 +146,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('post-partum-attention-fragile.mp4');
         $video->setSlug('post-partum-symptômes');
         $video->setCategorie($this->getReference(CategorieFixtures::POST_PARTUM));
-        $video->getSponsor($this->getReference(SponsorFixtures::MUSTELA));
+        $video->setSponsor($this->getReference(SponsorFixtures::MUSTELA));
         $manager->persist($video);
         
         $video = new Video();
@@ -156,7 +156,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('maison-maternelle-temoignage.mov');
         $video->setSlug('post-partum-papa');
         $video->setCategorie($this->getReference(CategorieFixtures::POST_PARTUM));
-        $video->getSponsor($this->getReference(SponsorFixtures::VERTBAUDET));
+        $video->setSponsor($this->getReference(SponsorFixtures::VERTBAUDET));
         $manager->persist($video);
 
         $video = new Video();
@@ -166,7 +166,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('maison-maternelle-allaitement.mov');
         $video->setSlug('les-positions-de-l-alaitement');
         $video->setCategorie($this->getReference(CategorieFixtures::CONSEILS_POUR_L_ALLAITEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::GUIGOZ));
+        $video->setSponsor($this->getReference(SponsorFixtures::GUIGOZ));
         $manager->persist($video);
 
         $video = new Video();
@@ -176,7 +176,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('allaitement.mp4');
         $video->setSlug('difficultes-d-allaitement-et-solutions');
         $video->setCategorie($this->getReference(CategorieFixtures::CONSEILS_POUR_L_ALLAITEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::MUSTELA));
+        $video->setSponsor($this->getReference(SponsorFixtures::MUSTELA));
         $manager->persist($video);
 
         $video = new Video();
@@ -186,7 +186,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('post-gallia.mp4');
         $video->setSlug('conseils-allaitement-mixte');
         $video->setCategorie($this->getReference(CategorieFixtures::CONSEILS_POUR_L_ALLAITEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
         $manager->persist($video);
 
         $video = new Video();
@@ -196,7 +196,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('tete.mp4');
         $video->setSlug('duree-et-quantite-d-allaitement');
         $video->setCategorie($this->getReference(CategorieFixtures::CONSEILS_POUR_L_ALLAITEMENT));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
         $manager->persist($video);
 
         $video = new Video();
@@ -206,7 +206,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('orange.mp4');
         $video->setSlug('Aliments-interdits-et-deconseilles');
         $video->setCategorie($this->getReference(CategorieFixtures::ALIMENTATION_PENDANT_LA_GROSSESSE));
-        $video->getSponsor($this->getReference(SponsorFixtures::GUIGOZ));
+        $video->setSponsor($this->getReference(SponsorFixtures::GUIGOZ));
         $manager->persist($video);
         $video = new Video();
 
@@ -216,7 +216,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('alimentation.mp4');
         $video->setSlug('bien-manger');
         $video->setCategorie($this->getReference(CategorieFixtures::ALIMENTATION_PENDANT_LA_GROSSESSE));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
         $manager->persist($video);
         
         $video->setTitle("Quoi manger");
@@ -225,7 +225,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('istockphoto-1387127411-640-adpp-is.mp4');
         $video->setSlug('quoi-manger');
         $video->setCategorie($this->getReference(CategorieFixtures::ALIMENTATION_PENDANT_LA_GROSSESSE));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_MAISON_DES_MATERNELLES));
         $manager->persist($video);
         
         $video->setTitle("Régime alimentaire");
@@ -234,7 +234,7 @@ class VideoFixtures extends Fixture
         $video->setVideoName('verbaudet-preparer-l-arrivee-de-bebe.mov');
         $video->setSlug('regime -alimentaire');
         $video->setCategorie($this->getReference(CategorieFixtures::ALIMENTATION_PENDANT_LA_GROSSESSE));
-        $video->getSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
+        $video->setSponsor($this->getReference(SponsorFixtures::LA_BOITE_ROSE));
         $manager->persist($video);
 
 
