@@ -23,8 +23,8 @@
     <li>{{ video.categorie }}</li>
 
     <h2>Sponsor(s)</h2>
-
-    <div>{{ video.sponsor.name  }}</div>
+    <img src="{{ asset ('sponsors/' ~ video.sponsor ) }}" alt="" class="img-fluid">
+    <div>{{ video.sponsor.name }}</div>
 
 
     </ul>
