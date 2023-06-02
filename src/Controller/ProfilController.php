@@ -65,7 +65,7 @@ class ProfilController extends AbstractController
     public function removeFavori($id, VideoRepository $videoRepository, EntityManagerInterface $em): Response
     {
         //on récupère le livre dans la base de donnée (car il nous faut l'objet video)
-        $viideo = $videoRepository->find($id);
+        $video = $videoRepository->find($id);
         //On récupère l'utilisateur 
         $user = $this->getUser();
         //On ajoute le livre à la liste des favoris de l'utilisateur 
