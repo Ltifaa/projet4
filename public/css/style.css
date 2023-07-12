@@ -3,9 +3,11 @@
 
 body{
     background-image: url('../images/background.png');
+    
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .cadre{
     background-color: rgb(249, 236, 219);
     padding: px;

@@ -34,7 +34,7 @@ class Sponsor
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-   
+
 
     #[ORM\ManyToMany(targetEntity: Categorie::class, mappedBy: 'sponsor')]
     private Collection $categories;
