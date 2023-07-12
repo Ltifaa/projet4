@@ -6,18 +6,31 @@ body{
     
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: #f7bec8;
 }
 
 .cadre{
     background-color: rgb(249, 236, 219);
-    padding: px;
+    padding: 25px;
     border-radius: 20px;
     border-style: solid;
 }
 
+.navbar{
+    align-items: center;
+}
+
+.logo{
+    width: 100px;
+}
+.card{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
 .moncompte{
     font-family: 'Gloria Hallelujah', cursive;
+    font-size: 4rem;
     text-align: center;
     margin: 30px;
 }
@@ -26,9 +39,14 @@ body{
     margin: 10px;
 }
 
+.nav-link{
+font-family: 'Poppins', sans-serif;
+font-size: 5rem;
+}
 
 h2 {
     font-family: 'Poppins', sans-serif;
+    margin-bottom: 5px;
     text-align: center;
 }
 

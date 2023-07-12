@@ -28,7 +28,7 @@ class SponsorFixtures extends Fixture
 
         $sponsor = new Sponsor();
         $sponsor->setName("La boîte rose");
-        $sponsor->setImageName("laboiterose.jpg");
+        $sponsor->setImageName("laboiterose.png");
         $sponsor->setSiteWeb("www.laboiterose.fr");
         $sponsor->setSlug("la-boite-rose");
         $manager->persist($sponsor);
@@ -37,7 +37,7 @@ class SponsorFixtures extends Fixture
 
         $sponsor = new Sponsor();
         $sponsor->setName("Vertbaudet");
-        $sponsor->setImageName("vertbaudet.jpg");
+        $sponsor->setImageName("vertbaudet.png");
         $sponsor->setSiteWeb("www.vertbaudet.fr");
         $sponsor->setSlug("vertbaudet");
         $manager->persist($sponsor);
@@ -64,7 +64,7 @@ class SponsorFixtures extends Fixture
 
         $sponsor = new Sponsor();
         $sponsor->setName("Mustela");
-        $sponsor->setImageName("mustela.jpg");
+        $sponsor->setImageName("mustela.png");
         $sponsor->setSiteWeb("www.mustela.fr");
         $sponsor->setSlug("mustela");
         $manager->persist($sponsor);
@@ -72,7 +72,7 @@ class SponsorFixtures extends Fixture
 
         $sponsor = new Sponsor();
         $sponsor->setName("Guigoz");
-        $sponsor->setImageName("guigoz.jpg");
+        $sponsor->setImageName("guigoz.png");
         $sponsor->setSiteWeb("www.guigoz.fr");
         $sponsor->setSlug("guigoz");
         $manager->persist($sponsor);
